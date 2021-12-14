@@ -4,6 +4,9 @@
 <h1>dashboard home</h1>
 <div class="container">
     <div>
+        {% autoescape off %}
+        {{ graph_div}}
+        {% endautoescape %}
     </div>
 </div>
 {% endblock content %}
