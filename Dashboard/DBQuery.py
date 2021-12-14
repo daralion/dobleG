@@ -6,7 +6,7 @@ jobCollection = gobDb["Jobs"]
 
 categories = jobCollection.aggregate([
     {
-        '$project': {'category': 'attributes.category_name'}
+        '$project': {'category': '$attributes.category_name'}
     }
 ])
 
