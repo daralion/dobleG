@@ -16,6 +16,11 @@ def home(request):
     seniority = DbQuery.get_seniority()
     seniority_df = pd.DataFrame(seniority)
     graph_sen = RunGraph.graph_pie(seniority_df)
+
+    category_and_seniority = DbQuery.get_categories_and_seniorities()
+    cat_and_sen_df = pd.DataFrame(category_and_seniority)
+    graph_cat_and_sen = RunGraph.graph_bar3(cat_and_sen_df)
+
     context = {
         'data': [
             {
@@ -24,11 +29,12 @@ def home(request):
             },
             {
                 'graph_div': graph_sen
-            }
-        ],
-        'select': [
+            },
+            {
+                'graph_div': graph_cat_and_sen
+            },
 
-        ]
+        ]   
     }
     return render(request, 'dashboard/home.html', context)
 

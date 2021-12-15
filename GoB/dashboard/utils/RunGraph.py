@@ -96,9 +96,6 @@ def graph_bar2(df,name_category):
     return text_div
 
 def graph_bar3(df,nombres_features=['category','seniority']):
-    import plotly
-    import plotly.graph_objects as go
-
     best10=df[nombres_features[0]].value_counts()[:10].index.tolist()
     df_new=df[df[nombres_features[0]].isin(best10)]
     df_groupby=df_new.groupby(nombres_features).size()
