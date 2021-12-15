@@ -46,6 +46,9 @@ The main dashboard page shows 2 graphs:
  2. A pie chart with the % of seniority requested by job
 ![dashboardpage](/resources/SS2.png?raw=true "Optional Title")
 
+ 3. The seniorities by category
+![dashboardpage](/resources/SS5.png?raw=true "Optional Title")
+
 
 Additionally, if you click the navbar menu to the right, you can select the selection page. 
 

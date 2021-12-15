@@ -114,7 +114,7 @@ def graph_bar3(df,nombres_features=['category','seniority']):
     ]
 
     text_div=plotly.offline.plot(
-        {'data':data,'layout':go.Layout(xaxis_tickangle=-45,barmode='group')},
+        {'data':data,'layout':go.Layout(xaxis_tickangle=-45,barmode='group', title="Seniorities por categoria")},
         include_plotlyjs=False, output_type='div'
     )
     return text_div
