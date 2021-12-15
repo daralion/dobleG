@@ -4,10 +4,10 @@
         {{data}}
     {% endif %}
     {% if categories %}
-        <div style="padding-top: 2%;">
+        <div class="col-md-2" style="padding-top: 2%;">
             <form name="categories_form" id="categories_form" method="post" action="">
                 {% csrf_token %}
-                <select id="categories" name="categories"  onChange="this.form.submit();">   
+                <select class="form-select"  id="categories" name="categories"  onChange="this.form.submit();">   
                     {% for category in categories %}
                         <option value={{forloop.counter}} {% if selected_category == category %} selected {% endif %} >
                             {{category}}
