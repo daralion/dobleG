@@ -2,19 +2,24 @@
 {% block content %}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <div class="container">
-    <div class="row" style="padding-top:2%;">
-        <div class="col-md-9">
-            {% autoescape off %}
-            {{ graph_div}}
-            {% endautoescape %}
+    {% for d in data %}
+        <div class="row" style="padding-top:2%;">
+            <div class="col-md-9">
+                {% autoescape off %}
+                {{ d.graph_div}}
+                {% endautoescape %}
+            </div>
+            {% if d.categories_count %}
+                <div class="col-md-3" style="max-height: 300px;overflow-y: scroll;">
+                    <ul class="list-group">
+                        
+                        {% for cat_count in d.categories_count %}
+                            <li class="list-group-item"> {{ cat_count.0 }} - {{cat_count.1}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
         </div>
-        <div class="col-md-3" style="max-height: 300px;overflow-y: scroll;">
-            <ul class="list-group">
-                {% for cat_count in categories_count %}
-                    <li class="list-group-item"> {{ cat_count.0 }} - {{cat_count.1}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock content %}

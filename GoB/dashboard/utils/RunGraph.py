@@ -21,6 +21,7 @@ def graph_bar(df,nombres_features='category'):
     )
     return text_div
 
+
 def graph_pie(df,nombres_features='seniority'):
     import plotly
     import plotly.graph_objects as go
@@ -34,6 +35,10 @@ def graph_pie(df,nombres_features='seniority'):
     )]
 
     text_div=plotly.offline.plot(
-        {'data':data}, include_plotlyjs=False, output_type='div'
+        {
+            'data':data,
+            'layout':go.Layout(title='Porcentaje de seniority')
+        }, 
+        include_plotlyjs=False, output_type='div'
     )
     return text_div
