@@ -1,5 +1,7 @@
 # dobleG
 
+**EL VIDEO SE ENCUENTRA EN LA CARPETA RAIZ DE ESTE REPO, CON EL NOMBRE grupo8_hackathon**
+
 WebApp that shows graphs for data based on the apis available in https://api-doc.getonbrd.com/.
 
 Data from the apis was programatically retrieved and saved in a mongo DB for ease of access.
