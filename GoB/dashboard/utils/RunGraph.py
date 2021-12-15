@@ -1,6 +1,7 @@
 import pandas as pd 
 import plotly
 import plotly.graph_objects as go
+from collections import Counter
 
 
 def graph_bar(df,nombres_features='category'):
@@ -59,7 +60,6 @@ def graph_pie2(df,name_category,nombres_features=['category','seniority']):
     return text_div
 
 def data_manipulation(list_features,name_category):
-    from collections import Counter
     #Creamos un diccionario con las categorias como llave y una lista vacia como valor
     dict_new={}
     for category in list_features:
@@ -77,9 +77,6 @@ def data_manipulation(list_features,name_category):
     return df_tags
 
 def graph_bar2(df,name_category):
-    import plotly
-    import plotly.graph_objects as go
-
     sort_tags=df.sort_values('Count',ascending=False)[:15]
     
     sort_tags.values.tolist()

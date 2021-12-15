@@ -36,19 +36,24 @@ def home(request):
 def selection(request):
     categories = DbQuery.get_categories()
     data = DbQuery.get_categories_and_seniorities()
+    data2 = DbQuery.get_categories_and_tags()
     categories_df = pd.DataFrame(categories)
     top_10_categories = categories_df['category'].value_counts()[:10].index.tolist()
+
 
     index = 0
     if request.method == 'POST':
         index = int(request.POST['categories']) - 1
-        
+
     selected_category = top_10_categories[index]
     graph = RunGraph.graph_pie2(pd.DataFrame(data), selected_category)
+    tags_df = RunGraph.data_manipulation(data2, selected_category)
+    graph2 = RunGraph.graph_bar2(tags_df, selected_category)
 
     return render(request, 'dashboard/selection.html', 
                     {
                         'categories': top_10_categories, 
                         'graph': graph, 
+                        'graph2': graph2,
                         'selected_category': selected_category
                     })

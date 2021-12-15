@@ -48,13 +48,17 @@ def get_categories_and_seniorities():
 
     return [*features]
 
-# features = jobCollection.aggregate([
-#     {
-#         '$project': {
-#             'category': '$attributes.category_name',
-#             'title': '$attributes.title',
-#             'tags': '$attributes.tags.data',
-#             'seniority': '$attributes.seniority.data.attributes.name'
-#         }
-#     }
-# ])
+def get_categories_and_tags():
+    (gobDb, client) = __get_db_handle()
+    jobCollection = gobDb["Jobs"]
+
+    features = jobCollection.aggregate([
+        {
+            '$project': {
+                'category': '$attributes.category_name',
+                'tags': '$attributes.tags.data'
+            }
+        }
+    ])
+
+    return [*features]

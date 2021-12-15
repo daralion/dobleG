@@ -48,5 +48,10 @@ The main dashboard page shows 2 graphs:
 
 
 Additionally, if you click the navbar menu to the right, you can select the selection page. 
-This page lets you select a category in order to show the seniority % by category
+
+This page lets you select a category in order to show the seniority % by category and the most common tags by category
+
+
 ![dashboardpage](/resources/SS3.png?raw=true "Optional Title")
+
+![dashboardpage](/resources/SS4.png?raw=true "Optional Title")
