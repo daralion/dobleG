@@ -26,7 +26,22 @@ def get_seniority():
     features = jobCollection.aggregate([
         {
             '$project': {
-            'seniority': '$attributes.seniority.data.attributes.name'
+                'seniority': '$attributes.seniority.data.attributes.name'
+            }
+        }
+    ])
+
+    return [*features]
+
+def get_categories_and_seniorities():
+    (gobDb, client) = __get_db_handle()
+    jobCollection = gobDb["Jobs"]
+
+    features = jobCollection.aggregate([
+        {
+            '$project': {
+                'category': '$attributes.category_name',
+                'seniority': '$attributes.seniority.data.attributes.name'
             }
         }
     ])

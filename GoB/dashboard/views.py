@@ -25,10 +25,30 @@ def home(request):
             {
                 'graph_div': graph_sen
             }
+        ],
+        'select': [
+
         ]
     }
     return render(request, 'dashboard/home.html', context)
 
 
-def about(request):
-    return render(request, 'dashboard/about.html')
+def selection(request):
+    categories = DbQuery.get_categories()
+    data = DbQuery.get_categories_and_seniorities()
+    categories_df = pd.DataFrame(categories)
+    top_10_categories = categories_df['category'].value_counts()[:10].index.tolist()
+
+    index = 0
+    if request.method == 'POST':
+        index = int(request.POST['categories']) - 1
+        
+    selected_category = top_10_categories[index]
+    graph = RunGraph.graph_pie2(pd.DataFrame(data), selected_category)
+
+    return render(request, 'dashboard/selection.html', 
+                    {
+                        'categories': top_10_categories, 
+                        'graph': graph, 
+                        'selected_category': selected_category
+                    })

@@ -23,9 +23,6 @@ def graph_bar(df,nombres_features='category'):
 
 
 def graph_pie(df,nombres_features='seniority'):
-    import plotly
-    import plotly.graph_objects as go
-
     num_in_features=df[nombres_features].value_counts()[:10]
     
     data=[go.Pie(
@@ -44,18 +41,14 @@ def graph_pie(df,nombres_features='seniority'):
     return text_div
 
     
-def graph_pie2(df,name_category,nombres_features='seniority'):
-    import plotly
-    import plotly.graph_objects as go
-
-    num_in_features=df[nombres_features].value_counts()[:10]
+def graph_pie2(df,name_category,nombres_features=['category','seniority']):
     elim=df['category'].value_counts()[-4:].index.tolist()
     df_new=df[~df['category'].isin(elim)]
     df_groupby=df_new.groupby(nombres_features).size()
     count_seniority=df_groupby[name_category]
     data=[go.Pie(
         labels = count_seniority.index,
-        values =count_seniority.values, textinfo='label+percent',
+        values = count_seniority.values, textinfo='label+percent',
                 insidetextorientation='radial'
     )]
 
@@ -64,3 +57,4 @@ def graph_pie2(df,name_category,nombres_features='seniority'):
         include_plotlyjs=False, output_type='div'
     )
     return text_div
+
